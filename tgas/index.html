@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document Viewer</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: url("../resources/img/bg.png") no-repeat center center fixed;
+        background-size: cover;
+      }
+
+      .doc-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        background-image: 
+      }
+
+      .doc-iframe {
+        width: 75vw;
+        height: 90vh;
+        border: none;
+        background: #ffffff;
+        box-shadow: 0 0 20px rgba(0,0,0,0.15);
+      }
+
+      .loading-overlay {
+        position: absolute;   
+        inset: 0;                   
+        display: flex;              
+        align-items: center;
+        justify-content: center;
+        font-family: sans-serif;
+        font-size: 1.1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="doc-container">
+      <div id="loading" class="loading-overlay">
+        Loading document...
+      </div>
+
+      <iframe
+        id="docFrame"
+        class="doc-iframe"
+        src="https://docs.google.com/document/d/e/2PACX-1vShzQB0a8cdpfcgut-HxoaI_KDJxUVeCr1OeHj2d6eioIwikPeISvg9cIrR5qxbYsiwzjWZRIExdl03/pub?embedded=true"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <script>
+      const iframe = document.getElementById("docFrame");          
+      const loadingOverlay = document.getElementById("loading"); 
+
+      iframe.addEventListener("load", () => {
+        // This runs when Google Doc finishes loading in the iframe
+        loadingOverlay.style.display = "none";                     
+      });
+    </script>
+  </body>
+</html>
